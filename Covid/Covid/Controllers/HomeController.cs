@@ -5,26 +5,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Covid.Models;
+using Covid.Model;
 
 namespace Covid.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IpaisModel _ipaisModel; 
+        public HomeController(IpaisModel pais)
+        {
+            _ipaisModel = pais;
+        }
+
         public IActionResult Index()
         {
+            var teste = _ipaisModel.ListarTodos();
             return View();
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            
 
             return View();
         }

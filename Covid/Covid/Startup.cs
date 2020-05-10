@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Covid.Model;
+using Covid.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,6 +33,8 @@ namespace Covid
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddScoped<IpaisModel, PaisModel>();
+            services.AddScoped<IpaisRepository, PaisRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
